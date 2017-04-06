@@ -1,0 +1,171 @@
+{
+  "bindings": [
+    {
+      "arguments": {}, 
+      "destination": "queue-1", 
+      "destination_type": "queue", 
+      "routing_key": "key1", 
+      "source": "example", 
+      "vhost": "/"
+    }, 
+    {
+      "arguments": {}, 
+      "destination": "example", 
+      "destination_type": "queue", 
+      "routing_key": "#", 
+      "source": "test", 
+      "vhost": "/"
+    }, 
+    {
+      "arguments": {}, 
+      "destination": "test-queue", 
+      "destination_type": "queue", 
+      "routing_key": "bar", 
+      "source": "test", 
+      "vhost": "/"
+    }, 
+    {
+      "arguments": {}, 
+      "destination": "test-queue", 
+      "destination_type": "queue", 
+      "routing_key": "foo", 
+      "source": "test", 
+      "vhost": "/"
+    }
+  ], 
+  "exchanges": [
+    {
+      "arguments": {}, 
+      "auto_delete": false, 
+      "durable": true, 
+      "internal": false, 
+      "name": "example", 
+      "type": "direct", 
+      "vhost": "/"
+    }, 
+    {
+      "arguments": {}, 
+      "auto_delete": false, 
+      "durable": true, 
+      "internal": false, 
+      "name": "test", 
+      "type": "topic", 
+      "vhost": "/"
+    }
+  ], 
+  "global_parameters": [
+    {
+      "name": "cluster_name", 
+      "value": "rabbit@s679"
+    }
+  ], 
+  "parameters": [
+    {
+      "component": "federation-upstream", 
+      "name": "other", 
+      "value": {
+        "ack-mode": "on-confirm", 
+        "prefetch-count": 1000, 
+        "reconnect-delay": 20, 
+        "trust-user-id": false, 
+        "uri": "amqp://guest:guest@localhost:5672/%2f"
+      }, 
+      "vhost": "/"
+    }, 
+    {
+      "component": "federation-upstream", 
+      "name": "test1", 
+      "value": {
+        "ack-mode": "on-confirm", 
+        "prefetch-count": 1000, 
+        "reconnect-delay": 20, 
+        "trust-user-id": false, 
+        "uri": "amqp://guest:guest@localhost:5672/%2f"
+      }, 
+      "vhost": "/"
+    }, 
+    {
+      "component": "federation-upstream", 
+      "name": "test2", 
+      "value": {
+        "ack-mode": "on-confirm", 
+        "prefetch-count": 1000, 
+        "reconnect-delay": 20, 
+        "trust-user-id": false, 
+        "uri": "amqp://guest:guest@localhost:5672/%2f"
+      }, 
+      "vhost": "/"
+    }
+  ], 
+  "permissions": [
+    {
+      "configure": ".*", 
+      "read": ".*", 
+      "user": "example", 
+      "vhost": "/", 
+      "write": ".*"
+    }, 
+    {
+      "configure": ".*", 
+      "read": ".*", 
+      "user": "guest", 
+      "vhost": "/", 
+      "write": ".*"
+    }
+  ], 
+  "policies": [
+    {
+      "apply-to": "queues", 
+      "definition": {
+        "queue-mode": "lazy"
+      }, 
+      "name": "test", 
+      "pattern": "^test-queue$", 
+      "priority": 10, 
+      "vhost": "/"
+    }
+  ], 
+  "queues": [
+    {
+      "arguments": {}, 
+      "auto_delete": false, 
+      "durable": true, 
+      "name": "example", 
+      "vhost": "/"
+    }, 
+    {
+      "arguments": {}, 
+      "auto_delete": false, 
+      "durable": true, 
+      "name": "queue-1", 
+      "vhost": "/"
+    }, 
+    {
+      "arguments": {}, 
+      "auto_delete": false, 
+      "durable": true, 
+      "name": "test-queue", 
+      "vhost": "/"
+    }
+  ], 
+  "rabbit_version": "3.6.9", 
+  "users": [
+    {
+      "hashing_algorithm": "rabbit_password_hashing_sha256", 
+      "name": "example", 
+      "password_hash": "q6WtPqeMND9A+lYI2b5wOVYmSLyX2U27IfBCPX8OjVNM2dQ0", 
+      "tags": ""
+    }, 
+    {
+      "hashing_algorithm": "rabbit_password_hashing_sha256", 
+      "name": "guest", 
+      "password_hash": "RL31lEchv816AtVlTw0FmIeI18YWT/q94PmBKXct0O6UomC8", 
+      "tags": "administrator"
+    }
+  ], 
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ]
+}
