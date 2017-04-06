@@ -1,7 +1,7 @@
+codecov
 coverage
 flake8
 mock
 nose
 pylint
 requests_mock
-wheel
