@@ -26,25 +26,9 @@ class DictListKeyTestCase(unittest.TestCase):
 class NestedSortTestCase(unittest.TestCase):
 
     def test_unexpected_list_of_values(self):
-        value = ['foo', {'bar': 'baz'}, 123]
-        result = rmq_definitions.nested_sort(value)
-        self.assertListEqual(result, sorted(value))
+        with self.assertRaises(ValueError):
+            rmq_definitions.nested_sort([{'bar': 'baz'}, [123, 456]])
 
-
-class OutputTestCase(unittest.TestCase):
-
-    def test_output_expectations(self):
-
-        with open('test-data/expectation.json', 'r') as handle:
-            expectation = handle.read()
-
-        with open('test-data/from-rmq.json', 'r') as handle:
-            definitions = json.load(handle)
-
-        with tempfile.TemporaryFile() as test_file:
-            rmq_definitions.write_definitions(test_file, definitions)
-            test_file.seek(0)
-            self.assertEqual(test_file.read(), expectation)
 
 
 class GetDefinitionsTestCase(unittest.TestCase):
@@ -78,12 +62,33 @@ class GetDefinitionsTestCase(unittest.TestCase):
                 rmq_definitions.get_definitions(args)
 
 
-class MainTestCase(unittest.TestCase):
+class JSONValueTestCase(unittest.TestCase):
+
+    @staticmethod
+    def read_expectation():
+        with open('test-data/expectation.json', 'r') as handle:
+            return '{}\n'.format(
+                json.dumps(json.load(handle), sort_keys=True, indent=2))
+
+
+class OutputTestCase(JSONValueTestCase):
+
+    def test_output_expectations(self):
+        expectation = self.read_expectation()
+        with open('test-data/from-rmq.json', 'r') as handle:
+            definitions = json.load(handle)
+
+        with tempfile.TemporaryFile(mode='w+') as test_file:
+            rmq_definitions.write_definitions(test_file, definitions)
+            test_file.seek(0)
+            self.assertEqual(test_file.read(), expectation)
+
+
+class MainTestCase(JSONValueTestCase):
 
     def test_from_file_specified(self):
-        with open('test-data/expectation.json', 'r') as handle:
-            expectation = handle.read()
-        with tempfile.NamedTemporaryFile() as test_file:
+        expectation = self.read_expectation()
+        with tempfile.NamedTemporaryFile(mode='w+') as test_file:
             args = rmq_definitions.parse_cli_arguments(
                 ['-f', 'test-data/from-rmq.json', test_file.name])
             with mock.patch('rmq_definitions.parse_cli_arguments') as cliargs:
@@ -93,18 +98,14 @@ class MainTestCase(unittest.TestCase):
             self.assertEqual(test_file.read(), expectation)
 
     def test_from_rabbitmq(self):
-        with open('test-data/expectation.json', 'r') as handle:
-            expectation = handle.read()
-
+        expectation = self.read_expectation()
         with open('test-data/from-rmq.json', 'r') as handle:
             definitions = handle.read()
-
         with requests_mock.mock() as request:
             request.register_uri(
                 'GET', 'http://localhost:15672/api/definitions',
                 status_code=200, text=definitions)
-
-            with tempfile.NamedTemporaryFile() as test_file:
+            with tempfile.NamedTemporaryFile(mode='w+') as test_file:
                 args = rmq_definitions.parse_cli_arguments([test_file.name])
                 with mock.patch(
                         'rmq_definitions.parse_cli_arguments') as cliargs:

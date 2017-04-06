@@ -54,6 +54,7 @@ def nested_sort(value):
 
     :param mixed item: The item to sort
     :rtype: mixed
+    :raises: ValueError
 
     """
     if isinstance(value, dict):
@@ -61,7 +62,7 @@ def nested_sort(value):
     elif isinstance(value, list):
         if all([isinstance(i, dict) for i in value]):
             return sorted(value, key=dict_list_key)
-        return sorted(value)
+        raise ValueError('Unexpected list with mismatched data types')
     return value
 
 
@@ -102,8 +103,9 @@ def write_definitions(handle, definitions):
     :param dict definitions: The parsed definitions from RabbitMQ
 
     """
-    json.dump(nested_sort(definitions), handle, sort_keys=True, indent=2)
-    handle.write('\n')
+    value = json.dumps(
+        nested_sort(definitions), handle, sort_keys=True, indent=2)
+    handle.write('{}\n'.format(value))
 
 
 def main():
