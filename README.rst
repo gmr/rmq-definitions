@@ -13,7 +13,7 @@ to a git repository and commits any changes to git, pushing to a remote
 location. By doing so, definition differences between commits can be 
 clearly tracked. 
 
-|Version| |Downloads| |Status| |License|
+|Version| |Downloads| |Status| |Coverage| |License|
 
 Requirements
 ------------
@@ -50,13 +50,19 @@ Usage
 	                        The RabbitMQ Management API username. Default: guest
 	  -p PASSWORD, --password PASSWORD
 	                        The RabbitMQ Management API password. Default: guest
+	  -f FROM_FILE, --from-file FROM_FILE
+	                        Read definitions from a file instead of the Management
+	                        API
 
 
 .. |Version| image:: https://img.shields.io/pypi/v/rmq-definitions.svg?
    :target: http://badge.fury.io/py/rmq-definitions
 
-.. |Status| image:: https://img.shields.io/travis/sprockets/rmq-definitions.svg?
-   :target: https://travis-ci.org/sprockets/rmq-definitions
+.. |Status| image:: https://img.shields.io/travis/gmr/rmq-definitions.svg?
+   :target: https://travis-ci.org/gmr/rmq-definitions
+
+.. |Coverage| image:: https://img.shields.io/codecov/c/github/gmr/rmq-definitions.svg?
+   :target: https://codecov.io/github/gmr/rmq-definitions?branch=master
 
 .. |Downloads| image:: https://img.shields.io/pypi/dm/rmq-definitions.svg?
    :target: https://pypi.python.org/pypi/rmq-definitions
