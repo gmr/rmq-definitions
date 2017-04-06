@@ -37,8 +37,7 @@ Usage
 	usage: rmq-sorted-definitions [-h] [--url URL] [-u USERNAME] [-p PASSWORD]
 	                              [DESTINATION]
 
-	Provides deterministic sorting for RabbitMQ definitions provided by the
-	Management API
+	Deterministicly sort and format RabbitMQ definition backups
 
 	positional arguments:
 	  DESTINATION           Location to write the definitions to. Default: STDOUT
