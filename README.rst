@@ -33,6 +33,7 @@ Usage
 -----
 
 .. code::
+
 	usage: rmq-sorted-definitions [-h] [--url URL] [-u USERNAME] [-p PASSWORD]
 	                              [DESTINATION]
 
@@ -50,6 +51,7 @@ Usage
 	                        The RabbitMQ Management API username. Default: guest
 	  -p PASSWORD, --password PASSWORD
 	                        The RabbitMQ Management API password. Default: guest
+
 
 .. |Version| image:: https://img.shields.io/pypi/v/rmq-definitions.svg?
    :target: http://badge.fury.io/py/rmq-definitions
