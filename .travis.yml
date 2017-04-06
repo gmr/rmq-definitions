@@ -1,0 +1,22 @@
+sudo: false
+language: python
+python:
+ - 2.7
+ - 3.4
+ - 3.5
+install:
+ - pip install -r requires/testing.txt
+ - pip install wheel
+script: nosetests
+after_success:
+ - codecov
+deploy:
+  distributions: sdist bdist_wheel
+  provider: pypi
+  user: crad
+  on:
+    python: 3.5
+    tags: true
+    all_branches: true
+  password:
+    secure: "ZBmAo9Gi/PrcNYVMmv3BmMB5De3mtPpWLK5Rm2OPVPCHAd3EvlhJdiMIqEeQBTazjZLFq7Rx9Nc42/iURiChlnSFFGSPsyMvng4DDKRpakcyNSSdPmmmofDVuL4ABlaWqmDzF6fOhb+f/hdU28oVD+c0G3r6ut9Igev133wcqehilpLBB3BPgvtCKMeULKwQR3IdUQdKxWBlWteWrDFKmvmGmdLwkQE+O7HMCsfhEDzUTsdPfLN1ZrmZ0AsoyNhI/YC+OW3KMJLHkijjfGNyvDDWxHh81nvH4gSAuQoQI2Tb/EFl2KiZD6ov83UvqF+XXFNdhe3meBQgtMSZxHYLu0HBfdi8iow7HyHn7cBqbPhGDVEJQYHChOg1OYbJqRMHmz/Yr52lDdcmWZ3/WigMnGmVlO1rwpdXDgcPYzRWl01HV6/Ppt41GI08sMBbJESfF9Hx1BmKX+xqtREUZF4OKp1T69cJA27WRM2gSdOXuHiUOpa8aegSIPRHUrO+2uA8VZvPTVGXiyB77BEsAy4ydAP4DwpL0dWykjxYX++sf37+FA5/0cDjXLq2hJjigBkrcJLaHvmg+i7vVkC012VQUD+R5YD5cGaFtgtw75QEJulACx3M/0KynTmCxXx16NJ1ZhUvVgQreJU7z+J4ULQoVKOPd5b7iRKKFi+PA9FEjhI="
