@@ -17,7 +17,7 @@ clearly tracked.
 
 Requirements
 ------------
-``rmq-definitions`` requires Python 2.7, 3.4, or 3.5 and 
+``rmq-definitions`` requires Python 2.7, 3.4, 3.5, or 3.6 and 
 `requests <http://docs.python-requests.org/en/master/>`_.
 
 Installation
