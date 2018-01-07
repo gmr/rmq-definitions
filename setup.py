@@ -29,7 +29,7 @@ setuptools.setup(
                  'definition backups'),
     author='Gavin M. Roy',
     author_email='gavinmroy@gmail.com',
-    url='https://github.com/sprockets/sprockets-influxdb',
+    url='https://github.com/gmr/rmq-definitions',
     install_requires=read_requirements('installation.txt'),
     license='BSD',
     py_modules=['rmq_definitions'],
