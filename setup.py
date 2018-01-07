@@ -24,7 +24,7 @@ def read_requirements(filename):
 
 setuptools.setup(
     name='rmq-definitions',
-    version='1.0.0',
+    version='1.0.1',
     description=('Deterministicly sorting and formatting of RabbitMQ '
                  'definition backups'),
     author='Gavin M. Roy',
@@ -48,6 +48,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: System :: Archiving :: Backup',
