@@ -104,7 +104,7 @@ def write_definitions(handle, definitions):
 
     """
     value = json.dumps(
-        nested_sort(definitions), handle, sort_keys=True, indent=2)
+        nested_sort(definitions), sort_keys=True, indent=2)
     handle.write('{}\n'.format(value))
 
 
