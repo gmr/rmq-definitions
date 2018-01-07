@@ -13,7 +13,7 @@ to a git repository and commits any changes to git, pushing to a remote
 location. By doing so, definition differences between commits can be 
 clearly tracked. 
 
-|Version| |Downloads| |Status| |Coverage| |License|
+|Version| |Status| |Coverage| |License|
 
 Requirements
 ------------
@@ -63,9 +63,6 @@ Usage
 
 .. |Coverage| image:: https://img.shields.io/codecov/c/github/gmr/rmq-definitions.svg?
    :target: https://codecov.io/github/gmr/rmq-definitions?branch=master
-
-.. |Downloads| image:: https://img.shields.io/pypi/dm/rmq-definitions.svg?
-   :target: https://pypi.python.org/pypi/rmq-definitions
 
 .. |License| image:: https://img.shields.io/pypi/l/rmq-definitions.svg?
    :target: https://rmq-definitions.readthedocs.org
