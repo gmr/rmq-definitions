@@ -1,6 +1,6 @@
 rmq-definitions
 ===============
-*Deterministicly sort and format RabbitMQ definition backups*
+*Deterministically sort and format RabbitMQ definition backups*
 
 ``rmq-definitions`` is an application that provides deterministic sorting and 
 formatting of JSON based RabbitMQ definition backups.  By transforming the JSON 
@@ -37,7 +37,7 @@ Usage
 	usage: rmq-sorted-definitions [-h] [--url URL] [-u USERNAME] [-p PASSWORD]
 	                              [DESTINATION]
 
-	Deterministicly sort and format RabbitMQ definition backups
+	Deterministically sort and format RabbitMQ definition backups
 
 	positional arguments:
 	  DESTINATION           Location to write the definitions to. Default: STDOUT
