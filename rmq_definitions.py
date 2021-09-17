@@ -21,6 +21,8 @@ def dict_list_key(item):
     """
     if 'vhost' in item and 'name' in item:
         return item['vhost'], item['name']
+    elif 'user' in item and 'vhost' in item:
+        return item['user'], item['vhost']
     elif 'vhost' in item and 'source' in item and 'destination' in item:
         return item['vhost'], item['source'], item['destination']
     for key in {'name', 'user'}:
