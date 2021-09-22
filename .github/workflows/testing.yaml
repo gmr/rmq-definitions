@@ -22,10 +22,9 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install testing dependencies
-        run: |
-          - mkdir -p build
-          - pip install -r requires/testing.txt
-          - pip install wheel
+        run: |-
+          mkdir -p build
+          pip install -r requires/testing.txt
 
       - name: Run flake8 tests
         run: flake8
