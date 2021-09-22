@@ -2,27 +2,27 @@ rmq-definitions
 ===============
 *Deterministically sort and format RabbitMQ definition backups*
 
-``rmq-definitions`` is an application that provides deterministic sorting and 
-formatting of JSON based RabbitMQ definition backups.  By transforming the JSON 
+``rmq-definitions`` is an application that provides deterministic sorting and
+formatting of JSON based RabbitMQ definition backups.  By transforming the JSON
 definitions file provided by the RabbitMQ Management UI, differential backups
-of RabbitMQ's definitions can be made. 
+of RabbitMQ's definitions can be made.
 
-Want to know when a certain queue was added or a binding was removed? You can 
-use ``rmq-definitions`` as part of a cron job that writes out the definitions 
-to a git repository and commits any changes to git, pushing to a remote 
-location. By doing so, definition differences between commits can be 
-clearly tracked. 
+Want to know when a certain queue was added or a binding was removed? You can
+use ``rmq-definitions`` as part of a cron job that writes out the definitions
+to a git repository and commits any changes to git, pushing to a remote
+location. By doing so, definition differences between commits can be
+clearly tracked.
 
 |Version| |Status| |Coverage| |License|
 
 Requirements
 ------------
-``rmq-definitions`` requires Python 2.7, 3.4, 3.5, or 3.6 and 
+``rmq-definitions`` requires Python 2.7, 3.4, 3.5, 3.6, 3.7, 3.8, or 3.9, and
 `requests <http://docs.python-requests.org/en/master/>`_.
 
 Installation
 ------------
-``rmq-definitions`` is available on the Python package index and is 
+``rmq-definitions`` is available on the Python package index and is
 installable via pip:
 
 .. code:: bash
