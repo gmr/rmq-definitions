@@ -1,14 +1,13 @@
 #!/usr/bin/env python
-#
+from os import path
 
-import os.path
 import setuptools
 
 
 def read_requirements(filename):
     requirements = []
     try:
-        with open(os.path.join('requires', filename)) as req_file:
+        with open(path.join('requires', filename)) as req_file:
             for line in req_file:
                 if '#' in line:
                     line = line[:line.index('#')]
@@ -24,7 +23,7 @@ def read_requirements(filename):
 
 setuptools.setup(
     name='rmq-definitions',
-    version='1.0.1',
+    version='1.1.0',
     description=('Deterministicly sorting and formatting of RabbitMQ '
                  'definition backups'),
     author='Gavin M. Roy',
@@ -37,7 +36,7 @@ setuptools.setup(
         'rmq-definitions=rmq_definitions:main'
     ]},
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: BSD License',
@@ -49,6 +48,9 @@ setuptools.setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: System :: Archiving :: Backup',

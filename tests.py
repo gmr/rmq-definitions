@@ -1,4 +1,3 @@
-import argparse
 import json
 import tempfile
 import unittest
@@ -30,7 +29,6 @@ class NestedSortTestCase(unittest.TestCase):
             rmq_definitions.nested_sort([{'bar': 'baz'}, [123, 456]])
 
 
-
 class GetDefinitionsTestCase(unittest.TestCase):
 
     def test_method_returns_dict(self):
@@ -43,7 +41,6 @@ class GetDefinitionsTestCase(unittest.TestCase):
             args = rmq_definitions.parse_cli_arguments([])
             response = rmq_definitions.get_definitions(args)
             self.assertDictEqual(response, expectation)
-
 
     def test_connection_error_raises_request_exception(self):
         args = rmq_definitions.parse_cli_arguments(

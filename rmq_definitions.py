@@ -60,7 +60,7 @@ def nested_sort(value):
 
     """
     if isinstance(value, dict):
-        return dict([(k, nested_sort(v)) for k, v in value.items()])
+        return {k: nested_sort(v) for k, v in value.items()}
     elif isinstance(value, list):
         if all([isinstance(i, dict) for i in value]):
             return sorted(value, key=dict_list_key)
