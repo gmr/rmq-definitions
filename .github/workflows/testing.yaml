@@ -21,6 +21,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
+      - name: Install OS dependencies
+        run: apk --update add gcc make musl-dev linux-headers
+
       - name: Install testing dependencies
         run: |-
           mkdir -p build
