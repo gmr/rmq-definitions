@@ -1,0 +1,46 @@
+name: Testing
+on:
+  push:
+    branches: ["*"]
+    paths-ignore:
+      - 'docs/**'
+      - 'setup.*'
+      - '*.md'
+      - '*.rst'
+    tags-ignore: ["*"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    strategy:
+      matrix:
+        python: [3.7, 3.8, 3.9]
+    container:
+      image: python:${{ matrix.python }}-alpine
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Install testing dependencies
+        run: |
+          - mkdir -p build
+          - pip install -r requires/testing.txt
+          - pip install wheel
+
+      - name: Run flake8 tests
+        run: flake8
+
+      - name: Run tests
+        run: coverage run
+
+      - name: Output coverage
+        run: coverage report && coverage xml
+
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v1.0.2
+        if: github.event_name == 'push' && github.repository == 'gmr/rmq-definitions'
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          file: build/coverage.xml
+          flags: unittests
+          fail_ci_if_error: true
